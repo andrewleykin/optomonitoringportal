@@ -1,0 +1,12 @@
+.app-form-row {
+  display: flex;
+  align-items: center;
+}
+
+.app-form-row > * + * {
+  margin-left: 15px;
+}
+
+.app-form-row + .app-form-row {
+  margin-top: 15px;
+}

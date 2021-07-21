@@ -1,0 +1,41 @@
+.app-checkbox {
+  font-size: 14px;
+  padding-left: 35px;
+  position: relative;
+}
+
+.app-checkbox input {
+  position: absolute;
+  appearance: none;
+}
+
+.app-checkbox input:checked + .app-checkbox__box {
+  background-color: #006c42;
+}
+
+.app-checkbox input:focus + .app-checkbox__box {
+  outline: -webkit-focus-ring-color auto 1px;
+}
+
+.app-checkbox__box {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #006c42;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-checkbox__box:before {
+  content: '';
+  width: 8px;
+  height: 4px;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  position: absolute;
+  transform: translateY(-1px) rotate(-45deg);
+}

@@ -1,0 +1,11 @@
+.app-date-picker-input {
+  padding: 0 20px;
+  height: 36px;
+  font-size: 14px;
+  line-height: 36px;
+  background-color: #ecedee;
+  border: none;
+  min-width: 200px;
+  cursor: pointer;
+  text-align: left;
+}
