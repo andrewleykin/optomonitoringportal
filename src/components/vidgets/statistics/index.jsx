@@ -1,12 +1,12 @@
 import React, { useState, memo } from 'react';
 import { Pie } from 'react-chartjs-2';
-import AppBlock from '../block';
-import AppModal from '../modal';
-import AppCheckbox from '../checkbox';
-import AppDatePicker from '../datepicker';
-import AppformRow from '../formRow'
-import {ReactComponent as ChartIcon} from './chart.svg'
-import {ReactComponent as SettingsIcon} from '../../settings.svg'
+import AppBlock from '../../ui/block';
+import AppModal from '../../ui/modal';
+import AppCheckbox from '../../ui/checkbox';
+import AppDatePicker from '../../ui/datepicker';
+import AppformRow from '../../ui/formRow';
+import {ReactComponent as ChartIcon} from './chart.svg';
+import {ReactComponent as SettingsIcon} from '../../../settings.svg';
 import './index.css';
 
 const AppStatisticsInfoItem = memo(({title, count, bold = false, tagColor}) => (
