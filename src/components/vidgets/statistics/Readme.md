@@ -29,8 +29,8 @@ const data = {
 }
 
 const settings = {
-  reports: new Date(),
-  events: new Date()
+  reports: new Date(),  // default
+  events: new Date()    // default
 }
 
 // такой же тип как и при передачи settings

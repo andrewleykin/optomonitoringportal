@@ -58,7 +58,7 @@ const data = {
 }
 
 const settings = {
-  showUnwatchWell: false
+  showUnwatchWell: false // default
 }
 
 // такой же тип как и при передачи settings
