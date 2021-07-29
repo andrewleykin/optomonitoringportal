@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AppModal from '../modal';
 import {ReactComponent as SettingsIcon} from './settings.svg';
+import {ReactComponent as HCollapseIcon} from './hCollapse.svg';
 import './index.css';
 
 const AppBlock = ({
@@ -11,9 +12,11 @@ const AppBlock = ({
   onCloseModal, 
   onConfirmModal, 
   modalTitle, 
-  modalContent
+  modalContent,
+  isHorizontalCollapse = false
 }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isHCollaple, setHCollaple] = useState(false);
 
   const openModal = () => {
     onOpenModal && onOpenModal()
@@ -30,21 +33,33 @@ const AppBlock = ({
     closeModal()
   }
 
+  const toggleHCollaple = () => setHCollaple(!isHCollaple);
+
   return (
-    <div className="block">
+    <div className={`block ${isHCollaple ? 'h_collaple' : ''}`}>
       <div className="block__header">
         <h2 className="block__title">{title}</h2>
         <div className="block__actions">
-          {actions}
-          {modalContent && (
+          {!isHCollaple && (
+            <>
+              {actions}
+            </>
+          )}
+          {isHorizontalCollapse && (
+            <button onClick={toggleHCollaple}><HCollapseIcon /></button>
+          )}
+          {modalContent && !isHCollaple && (
             <button onClick={openModal}><SettingsIcon /></button>
           )}
         </div>
       </div> 
 
-      <div className="block__body">
-        {children}
-      </div>
+      {!isHCollaple && (
+        <div className="block__body">
+          {children}
+        </div>
+      )}
+
 
       <AppModal 
         isOpen={isOpenModal} 

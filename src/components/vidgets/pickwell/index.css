@@ -26,47 +26,23 @@
   height: 100%;
 }
 
-.pickwell__item {
-  padding: 10px 0;
-}
-
-.pickwell__item.active > .pickwell__item-body {
-  height: auto;
-}
-
-.pickwell__item-header {
-  cursor: pointer;
+.pickwell__children {
   display: flex;
   align-items: center;
-  font-size: 16px;
-  color: #43525a;
-  background-color: transparent;
-  border: none;
 }
 
-.pickwell__item-body {
-  padding-top: 10px;
-  padding-left: 35px;
-  height: 0;
-  overflow: hidden;
-}
-
-.pickwell__item-name {
-  margin: 0 5px 0 10px;
-}
-
-.pickwell__item-status {
+.pickwell__status {
   display: flex;
   align-items: center;
   margin-left: 5px;
 }
 
-.pickwell__item-status-item {
+.pickwell__status-item {
   width: 10px;
   height: 10px;
   border-radius: 50%;
 }
 
-.pickwell__item-status-item + .pickwell__item-status-item {
+.pickwell__status-item + .pickwell__status-item {
   margin-left: 5px;
 }

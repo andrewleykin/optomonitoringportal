@@ -16,4 +16,9 @@
 
 .AppEvents {
   max-width: 1230px;
+  margin-bottom: 50px;
+}
+
+.AppLegends {
+  max-width: 355px;
 }

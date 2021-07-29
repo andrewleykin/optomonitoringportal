@@ -2,6 +2,7 @@ import React from 'react';
 import AppStatistics from './components/vidgets/statistics';
 import AppPickWell from './components/vidgets/pickwell';
 import AppEvents from './components/vidgets/events';
+import AppLegends from './components/vidgets/legends';
 import './App.css';
 
 const AppStatisticsData = {
@@ -110,6 +111,29 @@ const AppEventsData = [
   }
 ]
 
+const AppLegendsData = [
+  {
+    title: 'Режим работы на скважине',
+    count: 3,
+    childrens: [
+      {
+        title: 'Ведется наблюдение',
+        color: '#006c42'
+      }
+    ]
+  },
+  {
+    title: 'События на скважине',
+    count: 4,
+    childrens: [
+      {
+        title: 'Критическое событие',
+        color: '#e02a27'
+      }
+    ]
+  }
+]
+
 function App() {
   return (
     <div className="App">
@@ -122,6 +146,9 @@ function App() {
       </div>
       <div className="AppEvents">
         <AppEvents data={AppEventsData} onChangeSettings={() => {}} />
+      </div>
+      <div className="AppLegends">
+        <AppLegends data={AppLegendsData} />
       </div>
     </div>
   );

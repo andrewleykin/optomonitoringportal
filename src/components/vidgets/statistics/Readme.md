@@ -36,6 +36,6 @@ const settings = {
 // такой же тип как и при передачи settings
 const onChangeSettings = (settings) => {}
 
-<AppStatistics data={data} settings={settings} onChangeSettings={onChangeSettings}>
+<AppStatistics data={data} settings={settings} onChangeSettings={onChangeSettings} />
 
 ```

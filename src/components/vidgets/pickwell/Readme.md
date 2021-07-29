@@ -64,6 +64,6 @@ const settings = {
 // такой же тип как и при передачи settings
 const onChangeSettings = (settings) => {}
 
-<AppPickWell data={data} settings={settings} onChangeSettings={onChangeSettings}>
+<AppPickWell data={data} settings={settings} onChangeSettings={onChangeSettings} />
 
 ```

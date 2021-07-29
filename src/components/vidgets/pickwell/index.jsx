@@ -3,6 +3,7 @@ import useLocalStorage from 'react-use-localstorage';
 import AppBlock from '../../ui/block';
 import AppCheckbox from '../../ui/checkbox';
 import AppFormRow from '../../ui/formRow';
+import AppCollapse from '../../ui/collapse';
 import {ReactComponent as SearchIcon} from './search.svg';
 import './index.css';
 
@@ -36,7 +37,7 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
   })
   const [editSettings, setEditSettings] = useState(settings)
 
-  const changeShow = (key, show) => {
+  const changeSettings = (key, show) => {
     if (key === 'isOpenTree') {
       setLocalIsOpenTree(show)
     }
@@ -59,32 +60,28 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
     }
   }
 
-  const AppPickWellItem = ({title, count, colors, isParent = true, children}) => {
-    const [isOpenItem, setIsOpenItem] = useState(search.length > 0 ? true : settings.isOpenTree);
-    const toggleIsOpenItem = () => isParent && setIsOpenItem(!isOpenItem);
-    const HeaderTag = isParent ? 'button' : 'span';
-  
+  const AppPickWellItem = ({title, count, colors, children}) => {
     return (
-      <div className={`pickwell__item ${isOpenItem ? 'active' : ''}`}>
-        <HeaderTag className="pickwell__item-header" onClick={toggleIsOpenItem}>
-          {isParent && (
-            <div className="pickwell__item-icon">{isOpenItem ? '-' : '+'}</div>
-          )}
-          <span className="pickwell__item-name">{title}</span>
-          {count !== undefined && settings.count && (
-            <span className="pickwell__item-count">({count})</span>
-          )}
-          {settings.status && (
-            <div className="pickwell__item-status">
-              {colors.map((backgroundColor, index) => (
-                <div key={index} className="pickwell__item-status-item" style={{backgroundColor}} />
-              ))}
-            </div>
-          )}
-        </HeaderTag>
-        <div className="pickwell__item-body">
-          {children}
-        </div>
+      <AppCollapse 
+        title={title} 
+        count={count} 
+        isShowCount={settings.count} 
+        isOpen={settings.isOpenTree}
+        headerExtra={<AppPickWellItemStatus colors={colors} />}
+      >
+        {children}
+      </AppCollapse>
+    )
+  }
+
+  const AppPickWellItemStatus = ({colors}) => {
+    if (!settings.status) return null
+
+    return (
+      <div className="pickwell__status">
+        {colors.map((backgroundColor, index) => (
+          <div key={index} className="pickwell__status-item" style={{backgroundColor}} />
+        ))}
       </div>
     )
   }
@@ -92,16 +89,16 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
   const modalContent = (
     <>
       <AppFormRow>
-        <AppCheckbox value={editSettings.count} onChange={value => changeShow('count', value)} label="Отображать количество скважин в дереве" />
+        <AppCheckbox value={editSettings.count} onChange={value => changeSettings('count', value)} label="Отображать количество скважин в дереве" />
       </AppFormRow>
       <AppFormRow>
-        <AppCheckbox value={editSettings.status} onChange={value => changeShow('status', value)} label="Отображать состояние скважин в дереве" />
+        <AppCheckbox value={editSettings.status} onChange={value => changeSettings('status', value)} label="Отображать состояние скважин в дереве" />
       </AppFormRow>
       <AppFormRow>
-        <AppCheckbox value={editSettings.isOpenTree} onChange={value => changeShow('isOpenTree', value)} label="Всегда отображать развернутое дерево при следующем заходе" />
+        <AppCheckbox value={editSettings.isOpenTree} onChange={value => changeSettings('isOpenTree', value)} label="Всегда отображать развернутое дерево при следующем заходе" />
       </AppFormRow>
       <AppFormRow>
-        <AppCheckbox value={editSettings.showUnwatchWell} onChange={value => changeShow('showUnwatchWell', value)} label="Отображать скважины не под наблюдением" />
+        <AppCheckbox value={editSettings.showUnwatchWell} onChange={value => changeSettings('showUnwatchWell', value)} label="Отображать скважины не под наблюдением" />
       </AppFormRow>
     </>
   )
@@ -145,7 +142,10 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
                       {item.childrens.map(item => (
                         <AppPickWellItem key={item.id} title={item.title} count={item.count} colors={item.statuses}>
                           {item.childrens.map(item => (
-                            <AppPickWellItem key={item.id} title={item.title} colors={item.statuses} isParent={false} />
+                            <div key={item.id} className="pickwell__children">
+                              {item.title}
+                              <AppPickWellItemStatus colors={item.statuses} />
+                            </div>
                           ))}
                         </AppPickWellItem>
                       ))}
