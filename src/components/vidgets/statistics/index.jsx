@@ -1,12 +1,10 @@
 import React, { useState, memo } from 'react';
 import { Pie } from 'react-chartjs-2';
 import AppBlock from '../../ui/block';
-import AppModal from '../../ui/modal';
 import AppCheckbox from '../../ui/checkbox';
 import AppDatePicker from '../../ui/datepicker';
-import AppformRow from '../../ui/formRow';
+import AppFormRow from '../../ui/formRow';
 import {ReactComponent as ChartIcon} from './chart.svg';
-import {ReactComponent as SettingsIcon} from '../../../settings.svg';
 import './index.css';
 
 const AppStatisticsInfoItem = memo(({title, count, bold = false, tagColor}) => (
@@ -64,7 +62,6 @@ const AppStatisticsChart = memo(({title, values}) => (
 
 const AppStatistics = ({data, settings: propsSettings = {}, onChangeSettings}) => {
   const [isChart, setIsChart] = useState(false);
-  const [isOpenModal, setIsOpenModal] = useState(false);
   const [settings, setSettings] = useState({
     wells: {
       show: true
@@ -102,11 +99,6 @@ const AppStatistics = ({data, settings: propsSettings = {}, onChangeSettings}) =
 
   const openModal = () => {
     setEditSettings(settings)
-    setIsOpenModal(true)
-  }
-
-  const closeModal = () => {
-    setIsOpenModal(false)
   }
 
   const confirmModal = () => {
@@ -117,16 +109,37 @@ const AppStatistics = ({data, settings: propsSettings = {}, onChangeSettings}) =
         reports: editSettings.reports.date,
       })
     }
-    closeModal()
   }
 
+  const modalContent = (
+    <>
+      <AppFormRow>
+        <AppCheckbox value={editSettings.wells.show} onChange={value => changeShow('wells', value)} label="Отображать количество скважин в системе" />
+      </AppFormRow>
+      <AppFormRow>
+        <AppCheckbox value={editSettings.events.show} onChange={value => changeShow('events', value)} label="Отображать количество событий" />
+        <AppDatePicker value={editSettings.events.date} onChange={date => changeDate('events', date)} />
+      </AppFormRow>
+      <AppFormRow>
+        <AppCheckbox value={editSettings.reports.show} onChange={value => changeShow('reports', value)} label="Отображать количество отчетов" />
+        <AppDatePicker value={editSettings.reports.date} onChange={date => changeDate('reports', date)} />
+      </AppFormRow>
+    </>
+  )
+
   return (
-    <AppBlock title="Виджет со сводной статистикой" actions={(
-      <>
-        <button onClick={() => setIsChart(!isChart)}><ChartIcon /></button>
-        <button onClick={openModal}><SettingsIcon /></button>
-      </>
-    )}>
+    <AppBlock 
+      title="Виджет со сводной статистикой"
+      modalTitle="Настройка виджета со сводной статистикой"
+      modalContent={modalContent}
+      onOpenModal={openModal}
+      onConfirmModal={confirmModal}
+      actions={(
+        <>
+          <button onClick={() => setIsChart(!isChart)}><ChartIcon /></button>
+        </>
+      )}
+    >
       {isChart ? (
         <div className="statistics__charts">
           {settings.wells.show && (
@@ -152,25 +165,6 @@ const AppStatistics = ({data, settings: propsSettings = {}, onChangeSettings}) =
           )}
         </div>
       )}
-
-      <AppModal 
-        isOpen={isOpenModal} 
-        onClose={closeModal}
-        onConfirm={confirmModal}
-        title="Настройка виджета со сводной статистикой"
-      >
-        <AppformRow>
-          <AppCheckbox value={editSettings.wells.show} onChange={value => changeShow('wells', value)} label="Отображать количество скважин в системе" />
-        </AppformRow>
-        <AppformRow>
-          <AppCheckbox value={editSettings.events.show} onChange={value => changeShow('events', value)} label="Отображать количество событий" />
-          <AppDatePicker value={editSettings.events.date} onChange={date => changeDate('events', date)} />
-        </AppformRow>
-        <AppformRow>
-          <AppCheckbox value={editSettings.reports.show} onChange={value => changeShow('reports', value)} label="Отображать количество отчетов" />
-          <AppDatePicker value={editSettings.reports.date} onChange={date => changeDate('reports', date)} />
-        </AppformRow>
-      </AppModal>
     </AppBlock>
   );
 }

@@ -20,13 +20,15 @@
   align-items: center;
 }
 
-.block__actions button {
+.block__actions > button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-.block__actions svg {
+.block__actions > button > svg {
   fill: #d9dcde;
 }
 

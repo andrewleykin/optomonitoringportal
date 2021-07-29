@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 
-const AppformRow = ({children}) => {
+const AppFormRow = ({children}) => {
   return (
     <div className="app-form-row">
       {children}
@@ -9,4 +9,4 @@ const AppformRow = ({children}) => {
   );
 }
 
-export default AppformRow;
+export default AppFormRow;

@@ -1,0 +1,28 @@
+.app-events__table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+
+.app-events__table thead tr th {
+  border-bottom: 1px solid #43525a;
+  text-align: left;
+  padding-bottom: 10px;
+  padding-left: 7px;
+  font-weight: normal;
+}
+
+.app-events__table tbody tr td {
+  padding: 10px 7px;
+}
+
+.app-events__table tbody tr:nth-child(even) td {
+  background-color: #ecedee;
+}
+
+.app-events__table-badge {
+  width: 20px;
+  height: 20px;
+  display: block;
+  border-radius: 50%;
+}

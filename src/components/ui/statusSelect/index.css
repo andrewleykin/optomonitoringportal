@@ -1,0 +1,27 @@
+.status-select {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.status-select__item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+.status-select__item + .status-select__item {
+  margin-left: 40px;
+}
+
+.status-select__badge {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  border-radius: 50%;
+}

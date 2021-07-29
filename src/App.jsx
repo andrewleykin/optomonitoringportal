@@ -1,6 +1,7 @@
 import React from 'react';
 import AppStatistics from './components/vidgets/statistics';
 import AppPickWell from './components/vidgets/pickwell';
+import AppEvents from './components/vidgets/events';
 import './App.css';
 
 const AppStatisticsData = {
@@ -84,6 +85,31 @@ const AppPickWellData = {
   ]
 }
 
+const AppEventsData = [
+  {
+    color: '#006c42',
+    date: '03.05.2021',
+    time: '15:00',
+    well: '2096',
+    bush: 'куст',
+    field: 'месторождение',
+    organization: 'организация 1',
+    organization_two: 'организация 2',
+    event: 'смена чего-то'
+  },
+  {
+    color: '#fddb2a',
+    date: '03.05.2021',
+    time: '15:00',
+    well: '2096',
+    bush: 'куст',
+    field: 'месторождение',
+    organization: 'организация 1',
+    organization_two: 'организация 2',
+    event: 'смена чего-то'
+  }
+]
+
 function App() {
   return (
     <div className="App">
@@ -93,6 +119,9 @@ function App() {
       </div>
       <div className="AppPickWell">
         <AppPickWell data={AppPickWellData} onChangeSettings={() => {}} />
+      </div>
+      <div className="AppEvents">
+        <AppEvents data={AppEventsData} onChangeSettings={() => {}} />
       </div>
     </div>
   );

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import useLocalStorage from 'react-use-localstorage';
 import AppBlock from '../../ui/block';
-import AppModal from '../../ui/modal';
 import AppCheckbox from '../../ui/checkbox';
-import AppformRow from '../../ui/formRow';
+import AppFormRow from '../../ui/formRow';
 import {ReactComponent as SearchIcon} from './search.svg';
-import {ReactComponent as SettingsIcon} from '../../../settings.svg';
 import './index.css';
 
 const searchTerm = (items, term) => {
@@ -30,7 +28,6 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
   const [localIsOpenTree, setLocalIsOpenTree] = useLocalStorage('pickwell.isOpenTree', "false");
   const [search, setSearch] = useState('');
   const [filteredData, setFilteredData] = useState(data.wells || []);
-  const [isOpenModal, setIsOpenModal] = useState(false);
   const [settings, setSettings] = useState({
     count: true,
     status: true,
@@ -38,7 +35,6 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
     showUnwatchWell: propsSettings.showUnwatchWell || false
   })
   const [editSettings, setEditSettings] = useState(settings)
-  console.log("🚀 ~ file: index.jsx ~ line 41 ~ AppPickWell ~ settings", settings)
 
   const changeShow = (key, show) => {
     if (key === 'isOpenTree') {
@@ -52,11 +48,6 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
 
   const openModal = () => {
     setEditSettings(settings)
-    setIsOpenModal(true)
-  }
-
-  const closeModal = () => {
-    setIsOpenModal(false)
   }
 
   const confirmModal = () => {
@@ -66,7 +57,6 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
         showUnwatchWell: editSettings.showUnwatchWell,
       })
     }
-    closeModal()
   }
 
   const AppPickWellItem = ({title, count, colors, isParent = true, children}) => {
@@ -99,6 +89,23 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
     )
   }
 
+  const modalContent = (
+    <>
+      <AppFormRow>
+        <AppCheckbox value={editSettings.count} onChange={value => changeShow('count', value)} label="Отображать количество скважин в дереве" />
+      </AppFormRow>
+      <AppFormRow>
+        <AppCheckbox value={editSettings.status} onChange={value => changeShow('status', value)} label="Отображать состояние скважин в дереве" />
+      </AppFormRow>
+      <AppFormRow>
+        <AppCheckbox value={editSettings.isOpenTree} onChange={value => changeShow('isOpenTree', value)} label="Всегда отображать развернутое дерево при следующем заходе" />
+      </AppFormRow>
+      <AppFormRow>
+        <AppCheckbox value={editSettings.showUnwatchWell} onChange={value => changeShow('showUnwatchWell', value)} label="Отображать скважины не под наблюдением" />
+      </AppFormRow>
+    </>
+  )
+
   useEffect(() => {
     if (search.length === 0) {
       setFilteredData(data.wells)
@@ -112,9 +119,13 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
   }, [search])
 
   return (
-    <AppBlock title="Виджет в выбором скважины" actions={
-      <button onClick={openModal}><SettingsIcon /></button>
-    }>
+    <AppBlock 
+      title="Виджет в выбором скважины" 
+      modalTitle="Настройка виджета с выбором скважины"
+      modalContent={modalContent}
+      onOpenModal={openModal}
+      onConfirmModal={confirmModal}
+    >
       <div className="pickwell">
         <div className="pickwell__input">
           <SearchIcon />
@@ -146,27 +157,6 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
           ))}
         </div>
       </div>
-
-      <AppModal 
-        isOpen={isOpenModal} 
-        onClose={closeModal}
-        onConfirm={confirmModal}
-        title="Настройка виджета с выбором скважины"
-      >
-        <AppformRow>
-          <AppCheckbox value={editSettings.count} onChange={value => changeShow('count', value)} label="Отображать количество скважин в дереве" />
-        </AppformRow>
-        <AppformRow>
-          <AppCheckbox value={editSettings.status} onChange={value => changeShow('status', value)} label="Отображать состояние скважин в дереве" />
-        </AppformRow>
-        <AppformRow>
-          <AppCheckbox value={editSettings.isOpenTree} onChange={value => changeShow('isOpenTree', value)} label="Всегда отображать развернутое дерево при следующем заходе" />
-        </AppformRow>
-        <AppformRow>
-          <AppCheckbox value={editSettings.showUnwatchWell} onChange={value => changeShow('showUnwatchWell', value)} label="Отображать скважины не под наблюдением" />
-        </AppformRow>
-      </AppModal>
-
     </AppBlock>
   );
 }
