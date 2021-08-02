@@ -3,6 +3,8 @@ import AppStatistics from './components/vidgets/statistics';
 import AppPickWell from './components/vidgets/pickwell';
 import AppEvents from './components/vidgets/events';
 import AppLegends from './components/vidgets/legends';
+import AppMap from './components/vidgets/map';
+import AppMapBlock from './components/vidgets/map/block';
 import './App.css';
 
 const AppStatisticsData = {
@@ -134,6 +136,40 @@ const AppLegendsData = [
   }
 ]
 
+const AppMapBlockData = {
+  title: 'ПАО “ГАЗПРОМ” — ООО "Газпромнефть-Ямал" — Новопортовское НКГМ — Куст №9 —',
+  well: 'Скважина №2066',
+  color: '#e02a27',
+  warning: 'Внимание! Возможна негерметичность эксплутационной колонны',
+  events: [
+    {
+      title: 'Состояние скважины:',
+      color: '#e02a27',
+      value: 'В работе'
+    },
+    {
+      title: 'Состояние системы:',
+      color: '#fddb2a',
+      value: 'Под наблюдением'
+    },
+    {
+      title: 'Датчик DAS:',
+      color: '#006c42',
+      value: 'Нет связи (21.06.2021  14:20)'
+    },
+    {
+      title: 'Датчик DTS:',
+      color: '#006c42',
+      value: 'Нет связи 21.06.2021  14:20)'
+    },
+    {
+      title: 'Датчик давления:',
+      color: '#e02a27',
+      value: 'Нет связи (21.06.2021  14:20)'
+    }
+  ]
+}
+
 function App() {
   return (
     <div className="App">
@@ -149,6 +185,13 @@ function App() {
       </div>
       <div className="AppLegends">
         <AppLegends data={AppLegendsData} />
+      </div>
+      <div className="AppMap">
+        <AppMap>
+          <p>Компонент карты</p>
+          <h4>Блок при наведении на скважину</h4>
+          <AppMapBlock data={AppMapBlockData} onClose={() => {}} onOpen={() => {}} />
+        </AppMap>
       </div>
     </div>
   );

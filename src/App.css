@@ -8,17 +8,28 @@
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
+.App > div {
+  margin-bottom: 50px;
+  width: 100%;
+}
+
 .AppStatistics,
 .AppPickWell {
   max-width: 590px;
-  margin-bottom: 50px;
 }
 
 .AppEvents {
   max-width: 1230px;
-  margin-bottom: 50px;
 }
 
 .AppLegends {
   max-width: 355px;
+}
+
+.AppMap {
+  max-width: 877px;
+}
+
+.AppMap h4 {
+  margin-bottom: 40px;
 }

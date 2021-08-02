@@ -1,0 +1,123 @@
+.app-map-block {
+  width: 100%;
+  max-width: 412px;
+  position: relative;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  padding: 15px;
+}
+
+.app-map-block__status {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  position: absolute;
+  left: -21px;
+  top: -21px;
+  z-index: 2px;
+}
+
+.app-map-block__close {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #43525a;
+  color: #43525a;
+  background-color: transparent;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.app-map-block__title {
+  max-width: 300px;
+  margin: 0 auto 15px;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: normal;
+}
+
+.app-map-block__well {
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.app-map-block__badge {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.app-map-block__warning {
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 500;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  background-color: #e02a27;
+  width: calc(100% + 30px);
+  margin-left: -15px;
+  margin-bottom: 15px;
+}
+
+.app-map-block__list {
+  list-style: none;
+  margin-bottom: 20px;
+  padding: 0;
+  width: calc(100% + 30px);
+  margin-left: -15px;
+}
+
+.app-map-block__list li {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #000;
+  font-weight: 500;
+  padding: 5px 0;
+  padding-left: 40px;
+}
+
+.app-map-block__list li:nth-child(odd) {
+  background-color: #ecedee;
+}
+
+.app-map-block__list .app-map-block__badge {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.app-map-block__list-title {
+  width: 140px;
+  display: block;
+}
+
+.app-map-block__btn {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  min-width: 100px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  background-color: #004065;
+  border: none;
+  border-radius: 8px;
+}
+
+.app-map-block__btn:hover {
+  background-color: #013e61;
+}
