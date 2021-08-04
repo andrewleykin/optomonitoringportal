@@ -1,4 +1,6 @@
 import React from 'react';
+import AppHeader from './components/header';
+import AppSidebar from './components/sidebar';
 import AppStatistics from './components/vidgets/statistics';
 import AppPickWell from './components/vidgets/pickwell';
 import AppEvents from './components/vidgets/events';
@@ -172,28 +174,31 @@ const AppMapBlockData = {
 
 function App() {
   return (
-    <div className="App">
-      <h1 style={{marginBottom: '2em'}}>Примеры виджетов</h1>
-      <div className="AppStatistics">
-        <AppStatistics data={AppStatisticsData} onChangeSettings={() => {}} />
+    <>
+      <AppHeader />
+      <AppSidebar />
+      <div className="App">
+        <h1 style={{marginBottom: '2em'}}>Примеры виджетов</h1>
+        <div className="AppStatistics">
+          <AppStatistics data={AppStatisticsData} onChangeSettings={() => {}} />
+        </div>
+        <div className="AppPickWell">
+          <AppPickWell data={AppPickWellData} onChangeSettings={() => {}} />
+        </div>
+        <div className="AppEvents">
+          <AppEvents data={AppEventsData} onChangeSettings={() => {}} />
+        </div>
+        <div className="AppLegends">
+          <AppLegends data={AppLegendsData} />
+        </div>
+        <div className="AppMap">
+          <AppMap>
+            <h4>Блок при наведении на скважину</h4>
+            <AppMapBlock data={AppMapBlockData} onClose={() => {}} onOpen={() => {}} />
+          </AppMap>
+        </div>
       </div>
-      <div className="AppPickWell">
-        <AppPickWell data={AppPickWellData} onChangeSettings={() => {}} />
-      </div>
-      <div className="AppEvents">
-        <AppEvents data={AppEventsData} onChangeSettings={() => {}} />
-      </div>
-      <div className="AppLegends">
-        <AppLegends data={AppLegendsData} />
-      </div>
-      <div className="AppMap">
-        <AppMap>
-          <p>Компонент карты</p>
-          <h4>Блок при наведении на скважину</h4>
-          <AppMapBlock data={AppMapBlockData} onClose={() => {}} onOpen={() => {}} />
-        </AppMap>
-      </div>
-    </div>
+    </>
   );
 }
 
