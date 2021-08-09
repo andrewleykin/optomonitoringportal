@@ -1,6 +1,8 @@
 
 .block {
   padding: 30px;
+  border: 1px solid #004065;
+  height: 100%;
 }
 
 .block.h_collaple {

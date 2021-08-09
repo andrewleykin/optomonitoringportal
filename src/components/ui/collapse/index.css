@@ -15,6 +15,7 @@
   color: #43525a;
   background-color: transparent;
   border: none;
+  text-align: left;
 }
 
 .app-collapse__body {

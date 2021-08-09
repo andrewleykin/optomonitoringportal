@@ -25,4 +25,5 @@
   height: 20px;
   display: block;
   border-radius: 50%;
+  flex: none;
 }

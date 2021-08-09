@@ -70,6 +70,7 @@
   position: absolute;
   right: -100%;
   top: -8px;
+  flex: none;
 }
 
 .app-sidebar__menu-name {

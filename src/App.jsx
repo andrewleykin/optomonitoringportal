@@ -178,7 +178,7 @@ function App() {
       <AppHeader />
       <AppSidebar />
       <div className="App">
-        <h1 style={{marginBottom: '2em'}}>Примеры виджетов</h1>
+        {/* <h1 style={{marginBottom: '2em'}}>Примеры виджетов</h1> */}
         <div className="AppStatistics">
           <AppStatistics data={AppStatisticsData} onChangeSettings={() => {}} />
         </div>
@@ -188,14 +188,14 @@ function App() {
         <div className="AppEvents">
           <AppEvents data={AppEventsData} onChangeSettings={() => {}} />
         </div>
-        <div className="AppLegends">
-          <AppLegends data={AppLegendsData} />
-        </div>
         <div className="AppMap">
           <AppMap>
             <h4>Блок при наведении на скважину</h4>
             <AppMapBlock data={AppMapBlockData} onClose={() => {}} onOpen={() => {}} />
           </AppMap>
+        </div>
+        <div className="AppLegends">
+          <AppLegends data={AppLegendsData} />
         </div>
       </div>
     </>
