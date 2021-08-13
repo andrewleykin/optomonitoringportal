@@ -7,6 +7,7 @@ import {
 import AppHeader from './components/header';
 import AppSidebar from './components/sidebar';
 import MainPage from './pages/Main';
+import './App.css'
 
 
 function App() {
