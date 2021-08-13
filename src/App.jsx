@@ -12,7 +12,7 @@ import './App.css'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/optomonitoringportal/build">
       <Switch>
         <Route path="/" exact>
           <AppHeader />
