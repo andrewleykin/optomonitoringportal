@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import {ReactComponent as LinkIcon} from './link.svg';
 import {ReactComponent as UserIcon} from './user.svg';

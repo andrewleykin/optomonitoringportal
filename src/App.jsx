@@ -7,11 +7,13 @@ import {
 import AppHeader from './components/header';
 import AppSidebar from './components/sidebar';
 import MainPage from './pages/Main';
+import OnlinePage from './pages/Online';
 import './App.css'
 
 
 function App() {
   return (
+    // basename нужен для демонстрации на github
     <Router basename="/optomonitoringportal/build">
       <Switch>
         <Route path="/" exact>
@@ -22,9 +24,7 @@ function App() {
         <Route path="/online">
           <AppHeader />
           <AppSidebar />
-          <div className="Online">
-            Online page
-          </div>
+          <OnlinePage />
         </Route>
       </Switch>
     </Router>

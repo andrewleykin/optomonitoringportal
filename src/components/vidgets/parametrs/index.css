@@ -1,0 +1,22 @@
+.AppParametrs__item {
+  color: #43525a;
+}
+
+.AppParametrs__item + .AppParametrs__item {
+  margin-top: 25px;
+}
+
+.AppParametrs__title {
+  font-size: 14px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.AppParametrs__text {
+  font-size: 18px;
+  display: block;
+}
+
+.AppParametrs__text + .AppParametrs__text {
+  margin-top: 5px;
+}

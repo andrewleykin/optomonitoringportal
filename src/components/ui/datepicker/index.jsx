@@ -1,14 +1,12 @@
 import React, { forwardRef } from 'react';
 import DatePicker, { registerLocale } from "react-datepicker";
+import AppInput from '../input';
 import ru from 'date-fns/locale/ru';
 import "react-datepicker/dist/react-datepicker.css";
-import './index.css';
 registerLocale('ru', ru)
 
 const DatePickerInput = forwardRef(({ value, onClick }, ref) => (
-  <button className="app-date-picker-input" onClick={onClick} ref={ref}>
-    {value}
-  </button>
+  <AppInput value={value} onClick={onClick} ref={ref} />
 ));
 
 const AppDatePicker = ({value, onChange}) => {

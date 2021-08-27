@@ -1,0 +1,73 @@
+.OnlinePage {
+  padding: 45px 0 0 100px;
+  height: 100%;
+}
+
+.OnlinePage .block {
+  padding: 20px;
+}
+
+.OnlinePage .block__header {
+  margin-bottom: 20px;
+}
+
+.OnlinePage__header {
+  display: flex;
+  background-color: #2688c5;
+  padding: 0 15px;
+  border-top: 1px solid #8a959c;
+  border-bottom: 1px solid #8a959c;
+  position: fixed;
+  top: 45px;
+  left: 100px;
+  right: 0;
+}
+
+.OnlinePage__header button {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all .2s;
+  opacity: 0.3;
+}
+
+.OnlinePage__header button.active {
+  opacity: 1;
+}
+
+.OnlinePage__header button:hover {
+  background-color: #004065;
+  opacity: 1;
+}
+
+.OnlinePage__empty {
+  margin: 2em;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.OnlinePage__vidgets {
+  padding-top: 35px;
+  display: flex;
+}
+
+.OnlinePage__vidgets .col {
+  max-width: 315px;
+  flex: none;
+}
+
+.OnlinePage__vidgets .col > .block {
+  height: auto;
+  margin-top: -1px;
+}
+
+.OnlinePage__vidgets > .block {
+  flex: auto;
+  margin-left: -1px;
+  height: auto;
+  min-height: calc(100vh - 80px);
+}

@@ -1,0 +1,12 @@
+.modal-settings {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.modal-settings .app-form-row {
+  width: 50%;
+}
+
+.modal-settings .app-form-row:nth-child(2) {
+  margin-top: 0;
+}

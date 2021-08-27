@@ -1,0 +1,51 @@
+.AppSensors__list {
+  border-top: 1px solid #004065;
+  margin: 0 -20px;
+  width: calc(100% + 40px);
+  margin-bottom: -20px;
+}
+
+.AppSensors__item {
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+  font-size: 14px;
+  color: #43525a;
+  background-color: #ecedee;
+}
+
+.AppSensors__item:nth-child(even) {
+  background-color: #f5f6f7;  
+}
+
+.AppSensors__item.success .AppSensors__badge {
+  background-color: #006c42;
+}
+
+.AppSensors__item.warning {
+  background-color: #fffbe9;
+}
+
+.AppSensors__item.warning .AppSensors__badge {
+  background-color: #fddb2a;
+}
+
+.AppSensors__item.error {
+  background-color: #faece8;
+}
+
+.AppSensors__item.error .AppSensors__badge {
+  background-color: #d2451d;
+}
+
+.AppSensors__badge {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-right: 12px;
+  flex: none;
+}
+
+.AppSensors__title {
+  margin-right: 10px;
+}
