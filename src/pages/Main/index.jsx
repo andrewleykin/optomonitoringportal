@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useHistory} from 'react-router-dom';
 import AppStatistics from '../../components/vidgets/statistics';
 import AppPickWell from '../../components/vidgets/pickwell';
 import AppEvents from '../../components/vidgets/events';
@@ -171,6 +172,7 @@ const AppMapBlockData = {
 }
 
 const MainPage = () => {
+  const history = useHistory();
   const [isMapFullScreen, setIsMapFullScreen] = useState(false)
   const toggleFullScreen = () => setIsMapFullScreen(!isMapFullScreen)
 
@@ -192,7 +194,7 @@ const MainPage = () => {
       <div className="AppMap">
         <AppMap toggleFullScreen={toggleFullScreen}>
           <h4>Блок при наведении на скважину</h4>
-          <AppMapBlock data={AppMapBlockData} onClose={() => {}} onOpen={() => {}} />
+          <AppMapBlock data={AppMapBlockData} onClose={() => {}} onOpen={() => history.push('/online')} />
         </AppMap>
       </div>
       <div className="AppLegends">
