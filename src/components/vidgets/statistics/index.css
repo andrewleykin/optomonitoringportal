@@ -1,3 +1,7 @@
+.isChartActive svg {
+  fill: #979797 !important;
+}
+
 .statistics__list {
   display: flex;
   justify-content: space-between;

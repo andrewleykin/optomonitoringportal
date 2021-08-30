@@ -17,6 +17,8 @@
 
 .pickwell__input svg {
   flex: none;
+  width: 20px;
+  height: 20px;
 }
 
 .pickwell__input input {

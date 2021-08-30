@@ -53,10 +53,21 @@
   padding: 0;
 }
 
+.block__actions > button:hover > svg {
+  fill: #cecfd0;
+}
+
 .block__actions > button > svg {
   fill: #d9dcde;
+  width: 20px;
+  height: 20px;
+  flex: none;
 }
 
 .block__actions > * + * {
   margin-left: 10px;
+}
+
+.block__actions .vCollapseIcon {
+  transform: rotate(90deg);
 }

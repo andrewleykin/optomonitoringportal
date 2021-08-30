@@ -37,6 +37,11 @@
   cursor: pointer;
 }
 
+.app-sidebar__logo .logo {
+  width: 40px;
+  height: 40px;
+}
+
 .app-sidebar__menu {
   padding: 20px 0;
   border-top: 1px solid #8a959c;
@@ -54,6 +59,13 @@
 .app-sidebar__menu-item:hover,
 .app-sidebar__menu-item.active {
   background-color: #2688c5;
+}
+
+.app-sidebar__menu-item svg {
+  width: 30px;
+  height: 35px;
+  flex: none;
+  fill: #fff;
 }
 
 .app-sidebar__menu-icon {

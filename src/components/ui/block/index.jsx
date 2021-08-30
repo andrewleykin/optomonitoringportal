@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import AppModal from '../modal';
 import {ReactComponent as SettingsIcon} from './settings.svg';
 import {ReactComponent as HCollapseIcon} from './hCollapse.svg';
-import {ReactComponent as VCollapseIcon} from './vCollapse.svg';
 import './index.css';
 
 const AppBlock = ({
@@ -53,7 +52,7 @@ const AppBlock = ({
             <button onClick={toggleHCollaple}><HCollapseIcon /></button>
           )}
           {isVerticalCollapse && (
-            <button onClick={toggleVCollaple}><VCollapseIcon /></button>
+            <button onClick={toggleVCollaple} className="vCollapseIcon"><HCollapseIcon /></button>
           )}
           {modalContent && !isHCollaple && (
             <button onClick={openModal}><SettingsIcon /></button>

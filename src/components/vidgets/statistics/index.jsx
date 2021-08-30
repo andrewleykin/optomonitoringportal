@@ -136,7 +136,7 @@ const AppStatistics = ({data, settings: propsSettings = {}, onChangeSettings}) =
       onConfirmModal={confirmModal}
       actions={(
         <>
-          <button onClick={() => setIsChart(!isChart)}><ChartIcon /></button>
+          <button onClick={() => setIsChart(!isChart)} className={`${isChart ? 'isChartActive' : ''}`}><ChartIcon /></button>
         </>
       )}
     >
