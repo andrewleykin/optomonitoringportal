@@ -10,14 +10,20 @@ import ru from 'date-fns/locale/ru';
 import "react-datepicker/dist/react-datepicker.css";
 registerLocale('ru', ru)
 
-const AppThreshold = () => {
+const AppThreshold = ({data, onAddData, onChangeStatus, onDeleteData, settings: propsSettings, onChangeSettings}) => {
   const [settings, setSettings] = useState({
-    showMyThreshold: false,
-    showAllCrit: false,
-    emailNotif: false,
-    emails: '',
-    telegramNotif: false,
-    phones: ''
+    showMyThreshold: propsSettings.showMyThreshold || false,
+    showAllCrit: propsSettings.showAllCrit || false,
+    emailNotif: propsSettings.emailNotif || false,
+    emails: propsSettings.emails || '',
+    telegramNotif: propsSettings.telegramNotif || false,
+    phones: propsSettings.phones || ''
+  })
+
+  const [addThresholdDate, setAddThresholdDate] = useState({
+    startWatch: new Date(),
+    endWatch: new Date(),
+    deleteAfter: new Date()
   })
   const [editSettings, setEditSettings] = useState(settings)
 
@@ -34,12 +40,29 @@ const AppThreshold = () => {
 
   const confirmModal = () => {
     setSettings(editSettings)
+
+    onChangeSettings && onChangeSettings(editSettings)
   }
 
   const CustomDropdownIndicator = ({ innerProps }) => (
     <div {...innerProps} className="dropdown" />
   )
   const CustomIndicatorSeparator = () => null
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const formProps = Object.fromEntries(formData);
+    onAddData && onAddData(formProps)
+  } 
+
+  const onChangeStatusHandler = (status, id) => {
+    onChangeStatus && onChangeStatus(status, id)
+  }
+
+  const onDeleteDataHandler = (id) => {
+    onDeleteData && onDeleteData(id)
+  } 
 
   const modalContent = (
     <>
@@ -74,121 +97,59 @@ const AppThreshold = () => {
             </div>
           </div>
           <div className="tbody">
-            <div className="tr">
-              <div className="col">
-                <div className="checkbox">
-                  {/* Связать инпут и лейбл с помощью id обязательно */}
-                  <input type="checkbox" id="1" />
-                  <label htmlFor="1" />
+            {data.map(item => (
+              <div className="tr" key={item.id}>
+                <div className="col">
+                  <div className="checkbox">
+                    {/* TODO: */}
+                    <input type="checkbox" id={item.id} checked={item.isActive} onChange={e => onChangeStatusHandler(e.target.checked, item.id)} />
+                    <label htmlFor={item.id} />
+                  </div>
+                  <div className="badge" style={{backgroundColor: item.color}}></div>
                 </div>
-                <div className="badge" style={{backgroundColor: '#006c42'}}></div>
-              </div>
-              <div className="col">P (Атм.)</div>
-              <div className="col">{'<'}25</div>
-              <div className="col">Щербаков А.В.</div>
-              <div className="col">21.03.2021   14:10</div>
-              <div className="col">Проверка гипотезы чего-либо</div>
-              <div className="col">
-                {/* Добавить атрибут disabled для другого стиля кнопки */}
-                <button className="button">
-                  удалить
-                </button>
-              </div>
-            </div>
-            <div className="tr">
-              <div className="col">
-                <div className="checkbox">
-                  {/* Связать инпут и лейбл с помощью id обязательно */}
-                  <input type="checkbox" id="2" />
-                  <label htmlFor="2" />
+                <div className="col">{item.variable}</div>
+                <div className="col">{item.threshold}</div>
+                <div className="col">{item.createdUser}</div>
+                <div className="col">{item.createdAt}</div>
+                <div className="col">{item.comment}</div>
+                <div className="col">
+                  <button className="button" disabled={!item.isActive} onClick={() => onDeleteDataHandler(item.id)}>
+                    удалить
+                  </button>
                 </div>
-                <div className="badge" style={{backgroundColor: '#006c42'}}></div>
               </div>
-              <div className="col">P (Атм.)</div>
-              <div className="col">{'<'}25</div>
-              <div className="col">Щербаков А.В.</div>
-              <div className="col">21.03.2021   14:10</div>
-              <div className="col">Проверка гипотезы чего-либо</div>
-              <div className="col">
-                {/* Добавить атрибут disabled для другого стиля кнопки */}
-                <button className="button">
-                  удалить
-                </button>
-              </div>
-            </div>
-            <div className="tr">
-              <div className="col">
-                <div className="checkbox">
-                  {/* Связать инпут и лейбл с помощью id обязательно */}
-                  <input type="checkbox" id="3" />
-                  <label htmlFor="3" />
-                </div>
-                <div className="badge" style={{backgroundColor: '#006c42'}}></div>
-              </div>
-              <div className="col">P (Атм.)</div>
-              <div className="col">{'<'}25</div>
-              <div className="col">Щербаков А.В.</div>
-              <div className="col">21.03.2021   14:10</div>
-              <div className="col">Проверка гипотезы чего-либо</div>
-              <div className="col">
-                {/* Добавить атрибут disabled для другого стиля кнопки */}
-                <button className="button">
-                  удалить
-                </button>
-              </div>
-            </div>
-            <div className="tr">
-              <div className="col">
-                <div className="checkbox">
-                  {/* Связать инпут и лейбл с помощью id обязательно */}
-                  <input type="checkbox" id="4" />
-                  <label htmlFor="4" />
-                </div>
-                <div className="badge" style={{backgroundColor: '#006c42'}}></div>
-              </div>
-              <div className="col">P (Атм.)</div>
-              <div className="col">{'<'}25</div>
-              <div className="col">Щербаков А.В.</div>
-              <div className="col">21.03.2021   14:10</div>
-              <div className="col">Проверка гипотезы чего-либо</div>
-              <div className="col">
-                {/* Добавить атрибут disabled для другого стиля кнопки */}
-                <button className="button">
-                  удалить
-                </button>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
       <div className="app-threshold-modal-add">
         <h5>Добавить пороговое значение</h5>
-        <form className="app-threshold-modal-add__form">
+        <form className="app-threshold-modal-add__form" onSubmit={onSubmit}>
           <div className="app-threshold-modal-add__block">
             <label>Важность</label>
-            <ReactSelect className="select" placeholder="не выбрано" options={[{value: 1, label: '1'}]} components={{DropdownIndicator: CustomDropdownIndicator, IndicatorSeparator: CustomIndicatorSeparator}} />
+            <ReactSelect name="important" className="select" placeholder="не выбрано" options={[{value: 1, label: '1'}]} components={{DropdownIndicator: CustomDropdownIndicator, IndicatorSeparator: CustomIndicatorSeparator}} />
           </div>
           <div className="app-threshold-modal-add__block">
             <label>Переменная</label>
-            <ReactSelect className="select" placeholder="не выбрано" options={[{value: 1, label: '1'}]} components={{DropdownIndicator: CustomDropdownIndicator, IndicatorSeparator: CustomIndicatorSeparator}} />
+            <ReactSelect name="variable" className="select" placeholder="не выбрано" options={[{value: 1, label: '1'}]} components={{DropdownIndicator: CustomDropdownIndicator, IndicatorSeparator: CustomIndicatorSeparator}} />
           </div>
           <div className="app-threshold-modal-add__block">
             <label>Тип порога ({'>'}, {'<'}, Δ )</label>
-            <ReactSelect className="select" placeholder="не выбрано" options={[{value: 1, label: '1'}]} components={{DropdownIndicator: CustomDropdownIndicator, IndicatorSeparator: CustomIndicatorSeparator}} />
+            <ReactSelect name="threshold" className="select" placeholder="не выбрано" options={[{value: 1, label: '1'}]} components={{DropdownIndicator: CustomDropdownIndicator, IndicatorSeparator: CustomIndicatorSeparator}} />
           </div>
           <div className="app-threshold-modal-add__block">
             <label>Значение</label>
-            <input className="input" type="number" placeholder="0" />
+            <input className="input" type="number" placeholder="0"  name="value" />
           </div>
           <div className="app-threshold-modal-add__block">
             <label>Временной интервал</label>
-            <input className="input" type="number" placeholder="0" />
+            <input className="input" type="number" placeholder="0"  name="timeInterval" />
           </div>
           <div className="app-threshold-modal-add__block">
             <label>Диапазон глубины (м.)</label>
             <div className="row">
-              <div className="col"><input className="input" type="number" placeholder="От" /></div>
-              <div className="col"><input className="input" type="number" placeholder="До" /></div>
+              <div className="col"><input className="input" type="number" placeholder="От" name="startDepth" /></div>
+              <div className="col"><input className="input" type="number" placeholder="До" name="endDepth" /></div>
             </div>
           </div>
           <div className="app-threshold-modal-add__block">
@@ -201,6 +162,9 @@ const AppThreshold = () => {
                   showTimeInput
                   locale="ru"
                   className="datepicker"
+                  name="startWatch"
+                  selected={addThresholdDate.startWatch} 
+                  onChange={(startWatch) => setAddThresholdDate({...addThresholdDate, startWatch})}
                 />
               </div>
               <div className="col">
@@ -210,6 +174,9 @@ const AppThreshold = () => {
                   showTimeInput
                   locale="ru"
                   className="datepicker"
+                  name="endWatch"
+                  selected={addThresholdDate.endWatch} 
+                  onChange={(endWatch) => setAddThresholdDate({...addThresholdDate, endWatch})}
                 />
               </div>
             </div>
@@ -222,11 +189,14 @@ const AppThreshold = () => {
               showTimeInput
               locale="ru"
               className="datepicker"
+              name="deleteAfter"
+              selected={addThresholdDate.deleteAfter} 
+              onChange={(deleteAfter) => setAddThresholdDate({...addThresholdDate, deleteAfter})}
             />
           </div>
           <div className="app-threshold-modal-add__footer">
             <label>Комментарий</label>
-            <input className="input" placeholder="от" />
+            <input className="input" placeholder="от" name="comment" />
             <button type="submit">Добавить</button>
           </div>
         </form>
@@ -253,54 +223,20 @@ const AppThreshold = () => {
             </div>
           </div>
           <div className="tbody">
-            <div className="tr">
-              <div className="col">
-                <div className="badge" style={{backgroundColor: '#006c42'}}></div>
-              </div>
-              <div className="col">P (Атм.)</div>
-              <div className="col">24.515</div>
-              <div className="col">{'<'}25</div>
-            </div>
-            <div className="tr">
-              <div className="col">
-                <div className="badge" style={{backgroundColor: '#006c42'}}></div>
-              </div>
-              <div className="col">P (Атм.)</div>
-              <div className="col">24.515</div>
-              <div className="col">{'<'}25</div>
-            </div>
-            <div className="tr">
-              <div className="col">
-                <div className="badge" style={{backgroundColor: '#006c42'}}></div>
-              </div>
-              <div className="col">P (Атм.)</div>
-              <div className="col">24.515</div>
-              <div className="col">{'<'}25</div>
-            </div>
-            <div className="tr">
-              <div className="col">
-                <div className="badge" style={{backgroundColor: '#006c42'}}></div>
-              </div>
-              <div className="col">P (Атм.)</div>
-              <div className="col">24.515</div>
-              <div className="col">{'<'}25</div>
-            </div>
-            <div className="tr">
-              <div className="col">
-                <div className="badge" style={{backgroundColor: '#006c42'}}></div>
-              </div>
-              <div className="col">P (Атм.)</div>
-              <div className="col">24.515</div>
-              <div className="col">{'<'}25</div>
-            </div>
-            <div className="tr">
-              <div className="col">
-                <div className="badge" style={{backgroundColor: '#006c42'}}></div>
-              </div>
-              <div className="col">P (Атм.)</div>
-              <div className="col">24.515</div>
-              <div className="col">{'<'}25</div>
-            </div>
+            {data.map(item => {
+              if (!item.isActive) return null
+
+              return (
+                <div className="tr" key={item.id}>
+                  <div className="col">
+                    <div className="badge" style={{backgroundColor: item.color}}></div>
+                  </div>
+                  <div className="col">{item.variable}</div>
+                  <div className="col">{item.value}</div>
+                  <div className="col">{item.threshold}</div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>

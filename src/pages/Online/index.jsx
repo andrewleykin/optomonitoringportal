@@ -44,6 +44,42 @@ const AppParametrsData = {
   }
 }
 
+const AppThresholdData = [
+  {
+    id: 1,
+    variable: 'P (Атм.)',
+    value: '25.14',
+    threshold: '<25',
+    createdUser: 'Щербаков А.В.',
+    createdAt: '21.03.2021   14:10',
+    comment: 'comment',
+    isActive: true,
+    color: '#006c42'
+  },
+  {
+    id: 2,
+    variable: 'P (Атм.)',
+    value: '25.24',
+    threshold: '<25',
+    createdUser: 'Щербаков А.В.',
+    createdAt: '21.03.2021   14:10',
+    comment: 'comment2',
+    isActive: true,
+    color: '#006c42'
+  },
+  {
+    id: 3,
+    variable: 'P (Атм.)',
+    value: '25.34',
+    threshold: '<25',
+    createdUser: 'Щербаков А.В.',
+    createdAt: '21.03.2021   14:10',
+    comment: 'comment3',
+    isActive: false,
+    color: '#006c42'
+  }
+]
+
 const OnlinePage = () => {
 
   const vidgets = [
@@ -122,7 +158,7 @@ const OnlinePage = () => {
             <AppParametrs data={AppParametrsData} />
           )}
           {isActiveVidget('AppThreshold') && (
-            <AppThreshold />
+            <AppThreshold data={AppThresholdData} />
           )}
           {isActiveVidget('AppCamera') && (
             <AppCamera>AppCamera content</AppCamera>
