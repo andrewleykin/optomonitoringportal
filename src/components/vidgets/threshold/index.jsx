@@ -10,7 +10,7 @@ import ru from 'date-fns/locale/ru';
 import "react-datepicker/dist/react-datepicker.css";
 registerLocale('ru', ru)
 
-const AppThreshold = ({data, onAddData, onChangeStatus, onDeleteData, settings: propsSettings, onChangeSettings}) => {
+const AppThreshold = ({data, onAddData, onChangeStatus, onDeleteData, settings: propsSettings = {}, onChangeSettings}) => {
   const [settings, setSettings] = useState({
     showMyThreshold: propsSettings.showMyThreshold || false,
     showAllCrit: propsSettings.showAllCrit || false,
