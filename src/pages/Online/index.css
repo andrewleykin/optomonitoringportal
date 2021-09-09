@@ -21,6 +21,7 @@
   top: 45px;
   left: 100px;
   right: 0;
+  z-index: 2;
 }
 
 .OnlinePage__header button {

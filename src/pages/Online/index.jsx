@@ -77,6 +77,39 @@ const AppThresholdData = [
     comment: 'comment3',
     isActive: false,
     color: '#006c42'
+  },
+  {
+    id: 4,
+    variable: 'P (Атм.)',
+    value: '25.34',
+    threshold: '<25',
+    createdUser: 'Щербаков А.В.',
+    createdAt: '21.03.2021   14:10',
+    comment: 'comment3',
+    isActive: true,
+    color: '#006c42'
+  },
+  {
+    id: 5,
+    variable: 'P (Атм.)',
+    value: '25.34',
+    threshold: '<25',
+    createdUser: 'Щербаков А.В.',
+    createdAt: '21.03.2021   14:10',
+    comment: 'comment3',
+    isActive: true,
+    color: '#006c42'
+  },
+  {
+    id: 6,
+    variable: 'P (Атм.)',
+    value: '25.34',
+    threshold: '<25',
+    createdUser: 'Щербаков А.В.',
+    createdAt: '21.03.2021   14:10',
+    comment: 'comment3',
+    isActive: true,
+    color: '#006c42'
   }
 ]
 

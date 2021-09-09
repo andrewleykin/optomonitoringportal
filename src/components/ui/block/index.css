@@ -24,7 +24,7 @@
   writing-mode: vertical-lr;
   transform: rotate(180deg);
   margin-top: 15px;
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 
 .block__header {

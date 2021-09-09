@@ -96,7 +96,7 @@ const AppThreshold = ({data, onAddData, onChangeStatus, onDeleteData, settings: 
               <div className="col">Удалить</div>
             </div>
           </div>
-          <div className="tbody">
+          <div className="tbody scrollbar-style">
             {data.map(item => (
               <div className="tr" key={item.id}>
                 <div className="col">
@@ -222,7 +222,7 @@ const AppThreshold = ({data, onAddData, onChangeStatus, onDeleteData, settings: 
               <div className="col">Порог</div>
             </div>
           </div>
-          <div className="tbody">
+          <div className="tbody scrollbar-style">
             {data.map(item => {
               if (!item.isActive) return null
 
