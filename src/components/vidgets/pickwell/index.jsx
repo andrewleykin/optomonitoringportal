@@ -60,16 +60,31 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
     }
   }
 
-  const AppPickWellItem = ({title, count, colors, children}) => {
+  const AppPickWellItem = ({title, count, statuses, type, childrens, icon, openIcon, link}) => {
+    if (type === 'list') {
+      return (
+        <div className="pickwell__line pickwell__children">
+          <img src={icon} alt={`${title} icon`} />
+          <a href={link}>{title}</a>
+          <AppPickWellItemStatus colors={statuses} />
+        </div>
+      )
+    }
+
     return (
       <AppCollapse 
+        icon={icon}
+        openIcon={openIcon}
         title={title} 
         count={count} 
         isShowCount={settings.count} 
         isOpen={settings.isOpenTree}
-        headerExtra={<AppPickWellItemStatus colors={colors} />}
+        headerClass="pickwell__line"
+        headerExtra={<AppPickWellItemStatus colors={statuses} />}
       >
-        {children}
+        {childrens.map(item => (
+          <AppPickWellItem key={item.id} {...item} />
+        ))}
       </AppCollapse>
     )
   }
@@ -134,26 +149,7 @@ const AppPickWell = ({data, settings: propsSettings = {}, onChangeSettings}) => 
         </div>
         <div className="pickwell__list">
           {filteredData.map(item => (
-            <AppPickWellItem key={item.id} title={item.title} count={item.count} colors={item.statuses}>
-              {item.childrens.map(item => (
-                <AppPickWellItem key={item.id} title={item.title} count={item.count} colors={item.statuses}>
-                  {item.childrens.map(item => (
-                    <AppPickWellItem key={item.id} title={item.title} count={item.count} colors={item.statuses}>
-                      {item.childrens.map(item => (
-                        <AppPickWellItem key={item.id} title={item.title} count={item.count} colors={item.statuses}>
-                          {item.childrens.map(item => (
-                            <div key={item.id} className="pickwell__children">
-                              {item.title}
-                              <AppPickWellItemStatus colors={item.statuses} />
-                            </div>
-                          ))}
-                        </AppPickWellItem>
-                      ))}
-                    </AppPickWellItem>
-                  ))}
-                </AppPickWellItem>
-              ))}
-            </AppPickWellItem>
+            <AppPickWellItem key={item.id} {...item} />
           ))}
         </div>
       </div>

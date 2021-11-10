@@ -1,0 +1,129 @@
+.OnlinePageHeader {
+  display: flex;
+  background-color: #2688c5;
+  padding: 0 15px;
+  border-top: 1px solid #8a959c;
+  border-bottom: 1px solid #8a959c;
+  position: fixed;
+  top: 45px;
+  left: 100px;
+  right: 0;
+  z-index: 2;
+}
+
+.OnlinePageHeader__block {
+  position: relative;
+}
+
+.OnlinePageHeader__block:hover .OnlinePageHeader__submenu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.OnlinePageHeader__block > span {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  font-size: 12px;
+  text-transform: uppercase;
+  display: block;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.OnlinePageHeader__block > span:hover {
+  background-color: #1b72a8;
+}
+
+.OnlinePageHeader__submenu {
+  position: absolute;
+  left: 12px;
+  top: 100%;
+  background-color: #004065;
+  color: #fff;
+  min-width: 360px;
+  max-width: 360px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.OnlinePageHeader__submenu-group {
+  padding: 10px 0;
+}
+
+.OnlinePageHeader__submenu-group > * {
+  padding: 10px 30px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.OnlinePageHeader__submenu-group + .OnlinePageHeader__submenu-group {
+  border-top: 1px solid #8a959c;
+}
+
+.OnlinePageHeader__submenu-list {
+  position: relative;
+}
+
+.OnlinePageHeader__submenu-list:hover .OnlinePageHeader__submenu-sublist {
+  opacity: 1;
+  visibility: visible;
+}
+
+.OnlinePageHeader__submenu-list::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 8px;
+  border-color: transparent transparent transparent #fff;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.OnlinePageHeader__submenu-sublist {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  min-width: 360px;
+  max-width: 360px;
+  background-color: #004065;
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.OnlinePageHeader__submenu-sublist > * {
+  display: block;
+  padding: 10px 30px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.OnlinePageHeader__submenu-text {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.OnlinePageHeader__submenu-checkbox.active {
+  position: relative;
+}
+
+.OnlinePageHeader__submenu-checkbox.active::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  width: 10px;
+  height: 6px;
+  border: 2px solid transparent;
+  border-left-color: #fff;
+  border-bottom-color: #fff;
+  transform: rotate(-45deg);
+} 

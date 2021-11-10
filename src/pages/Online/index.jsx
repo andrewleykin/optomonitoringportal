@@ -8,6 +8,7 @@ import AppSchema from '../../components/vidgets/schema';
 import AppDts from '../../components/vidgets/dts';
 import AppDtsMap from '../../components/vidgets/dtsmap';
 import AppDas from '../../components/vidgets/das';
+import OnlinePageHeader from './Header';
 import './index.css';
 
 const AppSensorsData = {
@@ -154,31 +155,12 @@ const OnlinePage = () => {
     }
   ]
 
-  const [activeVidgets, setActiveVidgets] = useState(vidgets.map(item => item.key))
+  const [activeVidgets] = useState(vidgets.map(item => item.key))
   const isActiveVidget = (key) => activeVidgets.includes(key)
-
-  const toggleVidget = (key) => {
-    let newActiveVidgets = [...activeVidgets];
-    isActiveVidget(key) 
-      ? newActiveVidgets = newActiveVidgets.filter(item => item !== key) 
-      : newActiveVidgets.push(key)
-
-    setActiveVidgets(newActiveVidgets)
-  }
 
   return (
     <div className="OnlinePage">
-      <div className="OnlinePage__header">
-        {vidgets.map(vidget => (
-          <button 
-            key={vidget.key}
-            className={`${isActiveVidget(vidget.key) ? 'active' : ''}`} 
-            onClick={() => toggleVidget(vidget.key)} 
-          >
-            {vidget.button}
-          </button>
-        ))}
-      </div>
+      <OnlinePageHeader />
       <div className="OnlinePage__vidgets">
         {activeVidgets.length === 0 && (
           <h2 className="OnlinePage__empty">Выберете виджеты для отображения на странице</h2>

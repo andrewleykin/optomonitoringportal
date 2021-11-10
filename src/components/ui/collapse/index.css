@@ -5,6 +5,7 @@
 
 .app-collapse.active > .app-collapse__body {
   height: auto;
+  display: block;
 }
 
 .app-collapse__header {
@@ -23,6 +24,7 @@
   padding-left: 35px;
   height: 0;
   overflow: hidden;
+  display: none;
 }
 
 .app-collapse__name {
