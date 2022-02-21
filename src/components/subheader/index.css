@@ -1,4 +1,4 @@
-.OnlinePageHeader {
+.SubHeader {
   display: flex;
   background-color: #2688c5;
   padding: 0 15px;
@@ -11,16 +11,16 @@
   z-index: 2;
 }
 
-.OnlinePageHeader__block {
+.SubHeader__block {
   position: relative;
 }
 
-.OnlinePageHeader__block:hover .OnlinePageHeader__submenu {
+.SubHeader__block:hover .SubHeader__submenu {
   opacity: 1;
   visibility: visible;
 }
 
-.OnlinePageHeader__block > span {
+.SubHeader__block > span {
   color: #fff;
   background-color: transparent;
   border: none;
@@ -32,11 +32,11 @@
   transition: all .2s;
 }
 
-.OnlinePageHeader__block > span:hover {
+.SubHeader__block > span:hover {
   background-color: #1b72a8;
 }
 
-.OnlinePageHeader__submenu {
+.SubHeader__submenu {
   position: absolute;
   left: 12px;
   top: 100%;
@@ -48,31 +48,31 @@
   visibility: hidden;
 }
 
-.OnlinePageHeader__submenu-group {
+.SubHeader__submenu-group {
   padding: 10px 0;
 }
 
-.OnlinePageHeader__submenu-group > * {
+.SubHeader__submenu-group > * {
   padding: 10px 30px;
   color: #fff;
   text-decoration: none;
   cursor: pointer;
 }
 
-.OnlinePageHeader__submenu-group + .OnlinePageHeader__submenu-group {
+.SubHeader__submenu-group + .SubHeader__submenu-group {
   border-top: 1px solid #8a959c;
 }
 
-.OnlinePageHeader__submenu-list {
+.SubHeader__submenu-list {
   position: relative;
 }
 
-.OnlinePageHeader__submenu-list:hover .OnlinePageHeader__submenu-sublist {
+.SubHeader__submenu-list:hover .SubHeader__submenu-sublist {
   opacity: 1;
   visibility: visible;
 }
 
-.OnlinePageHeader__submenu-list::after {
+.SubHeader__submenu-list::after {
   content: '';
   display: block;
   width: 0;
@@ -85,7 +85,7 @@
   top: 15px;
 }
 
-.OnlinePageHeader__submenu-sublist {
+.SubHeader__submenu-sublist {
   position: absolute;
   left: 100%;
   top: 0;
@@ -97,7 +97,7 @@
   visibility: hidden;
 }
 
-.OnlinePageHeader__submenu-sublist > * {
+.SubHeader__submenu-sublist > * {
   display: block;
   padding: 10px 30px;
   color: #fff;
@@ -105,16 +105,16 @@
   cursor: pointer;
 }
 
-.OnlinePageHeader__submenu-text {
+.SubHeader__submenu-text {
   font-size: 16px;
   font-weight: 600;
 }
 
-.OnlinePageHeader__submenu-checkbox.active {
+.SubHeader__submenu-checkbox.active {
   position: relative;
 }
 
-.OnlinePageHeader__submenu-checkbox.active::before {
+.SubHeader__submenu-checkbox.active::before {
   content: '';
   display: block;
   position: absolute;

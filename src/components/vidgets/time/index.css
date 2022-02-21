@@ -1,0 +1,17 @@
+.AppTime {
+  border-top: 1px solid #004065;
+  margin: 0 -20px;
+  width: calc(100% + 40px);
+  margin-bottom: -20px;
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+  font-size: 14px;
+  color: #43525a;
+  background-color: #f5f6f7;
+}
+
+.AppTime span {
+  margin-left: 10px;
+  font-weight: 600;
+}

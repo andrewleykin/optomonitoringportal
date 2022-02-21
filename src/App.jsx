@@ -8,6 +8,7 @@ import AppHeader from './components/header';
 import AppSidebar from './components/sidebar';
 import MainPage from './pages/Main';
 import OnlinePage from './pages/Online';
+import HistoryPage from './pages/History';
 import './App.css'
 
 
@@ -25,6 +26,11 @@ function App() {
           <AppHeader />
           <AppSidebar />
           <OnlinePage />
+        </Route>
+        <Route path="/history">
+          <AppHeader />
+          <AppSidebar />
+          <HistoryPage />
         </Route>
       </Switch>
     </Router>

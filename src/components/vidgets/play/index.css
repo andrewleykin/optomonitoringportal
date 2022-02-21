@@ -1,0 +1,7 @@
+.app-play-table {
+  margin-bottom: 10px;
+}
+
+.app-play-table .col:nth-child(1) {
+  width: 130px;
+}

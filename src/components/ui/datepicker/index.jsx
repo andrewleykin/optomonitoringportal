@@ -9,14 +9,14 @@ const DatePickerInput = forwardRef(({ value, onClick }, ref) => (
   <AppInput value={value} onClick={onClick} ref={ref} />
 ));
 
-const AppDatePicker = ({value, onChange}) => {
+const AppDatePicker = ({value, onChange, showTimeInput = true}) => {
   return (
     <DatePicker
       selected={value}
       onSelect={onChange}
       timeInputLabel="Время:"
       dateFormat="MM/dd/yyyy h:mm"
-      showTimeInput
+      showTimeInput={showTimeInput}
       customInput={<DatePickerInput />}
       locale="ru"
     />

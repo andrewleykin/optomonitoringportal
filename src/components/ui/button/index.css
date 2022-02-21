@@ -1,0 +1,36 @@
+.app-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 10px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.app-button:hover {
+  opacity: 0.95;
+}
+
+.app-button.wide {
+  width: 100%;
+}
+
+.app-button.primary {
+  background-color: #2688c5;
+  color: #fff;
+}
+
+.app-button.success {
+  background-color: #006c42;
+  color: #fff;
+}
+
+.app-button.warning {
+  background-color: #fddb2a;
+  color: #000;
+}

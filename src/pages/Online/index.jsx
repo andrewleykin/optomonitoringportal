@@ -8,7 +8,7 @@ import AppSchema from '../../components/vidgets/schema';
 import AppDts from '../../components/vidgets/dts';
 import AppDtsMap from '../../components/vidgets/dtsmap';
 import AppDas from '../../components/vidgets/das';
-import OnlinePageHeader from './Header';
+import SubHeader from '../../components/subheader';
 import './index.css';
 
 const AppSensorsData = {
@@ -160,7 +160,7 @@ const OnlinePage = () => {
 
   return (
     <div className="OnlinePage">
-      <OnlinePageHeader />
+      <SubHeader />
       <div className="OnlinePage__vidgets">
         {activeVidgets.length === 0 && (
           <h2 className="OnlinePage__empty">Выберете виджеты для отображения на странице</h2>

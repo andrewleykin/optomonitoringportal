@@ -1,0 +1,29 @@
+.AppFilter__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.AppFilter__row + .AppFilter__row {
+  margin-top: 20px;
+}
+
+/* .AppFilter__row  */
+
+.AppFilter__row:first-child .app-input {
+  min-width: 120px;
+  width: 120px;
+}
+
+.AppFilter__row:nth-child(2) .app-input, 
+.AppFilter__row:nth-child(2) .app-select {
+  min-width: 85px;
+  width: 85px;
+}
+
+.AppFilter__label {
+  font-size: 14px;
+  color: #43525a;
+  display: block;
+  margin-bottom: 10px;
+}

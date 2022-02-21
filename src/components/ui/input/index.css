@@ -9,3 +9,14 @@
   cursor: pointer;
   text-align: left;
 }
+
+/* Chrome, Safari, Edge, Opera */
+.app-input::-webkit-outer-spin-button,
+.app-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+.app-input[type=number] {
+  -moz-appearance: textfield;
+}
